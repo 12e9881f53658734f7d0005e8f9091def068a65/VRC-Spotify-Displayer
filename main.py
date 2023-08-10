@@ -5,6 +5,8 @@ from win32gui import EnumWindows, GetWindowText
 from win32process import GetWindowThreadProcessId
 from psutil import process_iter
 
+# Biggest issue - uses a decent amount of cpu and ram when it updates 
+updateSpeed = 5 # In seconds
 match = " - "
 
 c = udp_client.SimpleUDPClient("127.0.0.1", 9000)
@@ -49,7 +51,7 @@ def main():
         if spotifySong and spotifySong != lastSong:
             lastSong = spotifySong
             sendChat(spotifySong)
-        sleep(5)
+        sleep(updateSpeed)
 
 if __name__ == "__main__":
     main()
